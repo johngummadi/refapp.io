@@ -3,7 +3,7 @@
   "version":"0.0.1",
   "testCases":[
     {
-      "title": "Email/Password Login (msmaster.qa)",
+      "title": "Email/Password Login",
       "steps":[
         {
           "title": "Authenticate",
@@ -11,81 +11,27 @@
           "input": {
             "prompt": "Undefined",
             "authState":"LoggedIn"
-            }
+          }
         },
         {
-            "title": "isAuthenticationNeeded",
-            "method": "isAuthenticationNeeded",
-            "input": {
-                "authenticationContext": {
-                    "authState": "Remembered"
-                }
+          "title": "isAuthenticationNeeded",
+          "method": "isAuthenticationNeeded",
+          "input": {
+            "authenticationContext": {
+              "authState": "Remembered"
             }
+          }
         }
       ]
     },
     {
-      "title": "Pin Login",
-      "steps":[
+      "title": "Biometric Login",
+      "steps": [
         {
-          "title": "Authenticate",
-          "method": "authenticate",
-          "input": {
-            "username": "_sys_aquarium-5578565733732589@paypal.com",
-            "password": "stage2@qa",
-            "prompt": "Undefined"
-          }
-        },
-        {
-          "title": "Disable Biometric",
-          "method": "disableAuthenticationMethod",
-          "input": {
-            "authenticationMethod": "BIOMETRIC"
-          }
-        },
-        {
-          "title": "Disable LLS",
-          "method": "disableAuthenticationMethod",
-          "input": {
-            "authenticationMethod": "DEVICECRYPTO"
-          }
-        },
-        {
-          "title": "Soft Logout",
+          "title": "Hard Logout",
           "method": "logout",
           "input": {
-            "hard": false
-          }
-        },
-        {
-          "title": "Authenticate",
-          "method": "authenticate",
-          "input": {
-            "pin": "5456",
-            "prompt": "Undefined"
-          }
-        },
-        {
-            "title": "Authentication Needed?",
-            "method": "isAuthenticationNeeded",
-            "input": {
-                "authenticationContext": {
-                    "authState": "LoggedIn"
-                }
-            }
-        }
-      ]
-    },
-    {
-      "title": "TouchID/FaceID Bind + Login",
-      "steps":[
-        {
-          "title": "Authenticate",
-          "method": "authenticate",
-          "input": {
-            "username": "_sys_aquarium-5578565733732589@paypal.com",
-            "password": "stage2@qa",
-            "prompt": "Undefined"
+            "hard": true
           }
         },
         {
@@ -105,20 +51,12 @@
           }
         },
         {
-          "title": "Authenticate",
+          "title": "Login",
           "method": "authenticate",
           "input": {
-            "prompt": "Undefined"
+            "prompt": "Undefined",
+            "authState": "LoggedIn"
           }
-        },
-        {
-            "title": "Authentication Needed?",
-            "method": "isAuthenticationNeeded",
-            "input": {
-                "authenticationContext": {
-                    "authState": "LoggedIn"
-                }
-            }
         }
       ]
     },
@@ -132,15 +70,15 @@
             "prompt": "Undefined",
             "authState":"Remembered"
           }
-        }, 
+        },
         {
-            "title": "isAuthenticationNeeded",
-            "method": "isAuthenticationNeeded",
-            "input": {
-                "authenticationContext": {
-                    "authState": "Remembered"
-                }
+          "title": "isAuthenticationNeeded",
+          "method": "isAuthenticationNeeded",
+          "input": {
+            "authenticationContext": {
+              "authState": "Remembered"
             }
+          }
         }
       ]
     },
@@ -153,10 +91,20 @@
           "input": {
             "username": "phoneCon@pp.com",
             "password": "stage2@qa",
-            "prompt": "Undefined", 
-            "authenticationContext": {
-                "authState": "Remembered"
-            }
+            "prompt": "Undefined",
+            "authState": "Remembered"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Identity Connect / PayPal Smart Help",
+      "steps":[
+        {
+          "title": "transferWebSession",
+          "method": "transferWebSession",
+          "input": {
+            "redirectUrl": "smarthelp"
           }
         }
       ]
@@ -217,8 +165,7 @@
           "method":"enableAuthenticationMethod",
           "input":{
             "authenticationMethods":["BIOMETRIC"],
-            "isConsentNeeded":true,
-            "loginPrompt":"Undefined"
+            "isConsentNeeded":true
           }
         }
       ]
@@ -250,7 +197,7 @@
           }
         }
       ]
-    }, 
+    },
     {
       "title": "Enable LLS wo Consent",
       "steps": [
@@ -261,18 +208,6 @@
             "authenticationMethods":["DEVICECRYPTO"],
             "isConsentNeeded":false,
             "loginPrompt":"Undefined"
-          }
-        }
-      ]
-    },
-    {
-      "title": "Identity Connect / PayPal Smart Help",
-      "steps":[
-        {
-          "title": "transferWebSession",
-          "method": "transferWebSession",
-          "input": {
-            "redirectUrl": "smarthelp"
           }
         }
       ]
