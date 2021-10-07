@@ -1,0 +1,338 @@
+{
+  "title":"Workflow",
+  "version":"0.0.1",
+  "testCases":[
+    {
+      "title": "First Time Valid Email/Password Login",
+      "description": "Test first time valid email / password login",
+      "steps":[
+        {
+            "title": "Hard Logout",
+            "method": "logout",
+            "input": {
+              "hard": true
+            }
+        },
+        {
+          "title": "Authenticate",
+          "method": "authenticate",
+          "input": {
+            "prompt": "Undefined",
+            "authState":"LoggedIn"
+          }
+        },
+        {
+          "title": "isAuthenticationNeeded",
+          "method": "isAuthenticationNeeded",
+          "input": {
+            "authenticationContext": {
+              "authState": "Remembered"
+            }
+          }
+        }
+      ]
+    },
+    {
+        "title": "Invalid Email/Password Login",
+        "description": "Test invalid email / password login",
+        "steps":[
+          {
+              "title": "Hard Logout",
+              "method": "logout",
+              "input": {
+                "hard": true
+              }
+          },
+          {
+            "title": "Authenticate",
+            "method": "authenticate",
+            "input": {
+              "prompt": "Undefined",
+              "authState":"LoggedIn",
+              "email": "johndoe@email.com",
+              "password": "1111"
+            }
+          },
+          {
+            "title": "isAuthenticationNeeded",
+            "method": "isAuthenticationNeeded",
+            "input": {
+              "authenticationContext": {
+                "authState": "Remembered"
+              }
+            }
+          }
+        ]
+    },
+    {
+        "title": "Test Empty Password",
+        "description": "Test empty password",
+        "steps":[
+          {
+              "title": "Hard Logout",
+              "method": "logout",
+              "input": {
+                "hard": true
+              }
+          },
+          {
+            "title": "Authenticate",
+            "method": "authenticate",
+            "input": {
+              "prompt": "Undefined",
+              "authState":"LoggedIn",
+              "email": "johndoe@email.com",
+              "password": ""
+            }
+          }
+        ]
+    },
+    {
+        "title": "Test Empty Email",
+        "description": "Test empty email",
+        "steps":[
+          {
+              "title": "Hard Logout",
+              "method": "logout",
+              "input": {
+                "hard": true
+              }
+          },
+          {
+            "title": "Authenticate",
+            "method": "authenticate",
+            "input": {
+              "prompt": "Undefined",
+              "authState":"LoggedIn",
+              "email": "",
+              "password": "1111"
+            }
+          }
+        ]
+    },
+    {
+      "title": "Biometric Login with Fingerprint",
+      "steps": [
+        {
+          "title": "Hard Logout",
+          "method": "logout",
+          "input": {
+            "hard": true
+          }
+        },
+        {
+          "title": "Enable Biometric",
+          "method":"enableAuthenticationMethod",
+          "input":{
+            "authenticationMethods":["BIOMETRIC"],
+            "isConsentNeeded":true,
+            "loginPrompt":"Undefined"
+          }
+        },
+        {
+          "title": "Soft Logout",
+          "method": "logout",
+          "input": {
+            "hard": false
+          }
+        },
+        {
+          "title": "Login",
+          "method": "authenticate",
+          "input": {
+            "prompt": "Undefined",
+            "authState": "LoggedIn"
+          }
+        }
+      ]
+    },
+    {
+        "title": "Biometric Login with FaceID",
+        "steps": [
+          {
+            "title": "Hard Logout",
+            "method": "logout",
+            "input": {
+              "hard": true
+            }
+          },
+          {
+            "title": "Enable Biometric",
+            "method":"enableAuthenticationMethod",
+            "input":{
+              "authenticationMethods":["BIOMETRIC"],
+              "isConsentNeeded":true,
+              "loginPrompt":"Undefined"
+            }
+          },
+          {
+            "title": "Soft Logout",
+            "method": "logout",
+            "input": {
+              "hard": false
+            }
+          },
+          {
+            "title": "Login",
+            "method": "authenticate",
+            "input": {
+              "prompt": "Undefined",
+              "authState": "LoggedIn"
+            }
+          }
+        ]
+    },
+    {
+      "title": "Login w Verification (Soft)",
+      "steps":[
+        {
+          "title": "Login",
+          "method": "authenticate",
+          "input": {
+            "prompt": "Undefined",
+            "authState":"Remembered"
+          }
+        },
+        {
+          "title": "isAuthenticationNeeded",
+          "method": "isAuthenticationNeeded",
+          "input": {
+            "authenticationContext": {
+              "authState": "Remembered"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "ATO Login",
+      "steps":[
+        {
+          "title": "Login",
+          "method": "authenticate",
+          "input": {
+            "username": "phoneCon@pp.com",
+            "password": "stage2@qa",
+            "prompt": "Undefined",
+            "authState": "Remembered"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Identity Connect / PayPal Smart Help",
+      "steps":[
+        {
+          "title": "transferWebSession",
+          "method": "transferWebSession",
+          "input": {
+            "redirectUrl": "smarthelp"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Hard Logout",
+      "steps":[
+        {
+          "title": "Logout",
+          "method": "logout",
+          "input": {
+            "hard": true
+          }
+        }
+      ]
+    },
+    {
+      "title": "Soft Logout",
+      "steps":[
+        {
+          "title": "Logout",
+          "method": "logout",
+          "input": {
+            "hard": false
+          }
+        }
+      ]
+    },
+    {
+      "title": "Disable Biometric",
+      "steps":[
+        {
+          "title": "disableAuthenticationMethod",
+          "method": "disableAuthenticationMethod",
+          "input": {
+            "authenticationMethod": "BIOMETRIC"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Disable LLS",
+      "steps":[
+        {
+          "title": "disableAuthenticationMethod",
+          "method": "disableAuthenticationMethod",
+          "input": {
+            "authenticationMethod": "DEVICECRYPTO"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enable Biometric with Consent",
+      "steps": [
+        {
+          "title": "enableAuthenticationMethod",
+          "method":"enableAuthenticationMethod",
+          "input":{
+            "authenticationMethods":["BIOMETRIC"],
+            "isConsentNeeded":true
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enable Biometric wo Consent",
+      "steps": [
+        {
+          "title": "enableAuthenticationMethod",
+          "method":"enableAuthenticationMethod",
+          "input":{
+            "authenticationMethods":["BIOMETRIC"],
+            "isConsentNeeded":false,
+            "loginPrompt":"Undefined"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enable LLS w Consent",
+      "steps": [
+        {
+          "title": "Enable LLS",
+          "method":"enableAuthenticationMethod",
+          "input":{
+            "authenticationMethods":["DEVICECRYPTO"],
+            "isConsentNeeded":true,
+            "loginPrompt":"Undefined"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enable LLS wo Consent",
+      "steps": [
+        {
+          "title": "Enable LLS",
+          "method":"enableAuthenticationMethod",
+          "input":{
+            "authenticationMethods":["DEVICECRYPTO"],
+            "isConsentNeeded":false,
+            "loginPrompt":"Undefined"
+          }
+        }
+      ]
+    }
+  ]
+}
