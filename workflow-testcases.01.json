@@ -3,6 +3,23 @@
   "version":"0.0.2",
   "testCases":[
     {
+      "title": "Soft Login",
+      "description": "Soft Login prompt Undfined",
+      "steps":[
+        {
+          "title": "Authenticate (Soft Login)",
+          "method": "authenticate",
+          "input": {
+            "prompt": "Undefined"
+          }
+        },
+        {
+          "title": "isAuthenticationNeeded",
+          "method": "isAuthenticationNeeded"
+        }
+      ]
+    },
+    {
       "title": "First Time Valid Email/Password Login",
       "description": "Test first time valid email / password login",
       "steps":[
