@@ -89,7 +89,7 @@
           "title": "Login",
           "method": "authenticate",
           "input": {
-            "username": "phoneCon@pp.com",
+            "email": "phoneCon@pp.com",
             "password": "stage2@qa",
             "prompt": "Undefined",
             "authState": "Remembered"
